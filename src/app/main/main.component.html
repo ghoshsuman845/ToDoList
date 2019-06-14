@@ -13,7 +13,7 @@
   <ul class="list-group" >
     <li class="list-group-item" *ngFor= "let item of todolistArray"  >
       <span class="hover-cursor" [class.text-success]="item.isChecked" (click)="alterCheck(item.$key,item.isChecked)">
-        <i class="fa fa-lg" [ngClass]="item.isChecked?'fa-check-circle-o':'fa-circle-thin'" (click)="opened=true"></i>
+        <i class="fa fa-lg" [ngClass]="item.isChecked?'fa-check-circle-o':'fa-circle-thin'" ></i>
       </span>
       {{item.title}}
       <span class="hover-cursor text-danger pull-right" (click)="onDelete(item.$key)">
@@ -21,7 +21,7 @@
         </span>
     </li>
   </ul>
-
+  <a mat-raised-button class="linkbtn" (click)="opened=true"  color="primary"> <mat-icon>add</mat-icon>Add Another</a>
 </div>
 
 
@@ -62,7 +62,6 @@
       <div class="example-button-row">
        <button mat-raised-button [disabled]="contactForm.valid" (click)="clearForm()" (click)="onSubmit()" color="primary">Save Task</button>
 
-       
       </div>
     </div>
   </div>

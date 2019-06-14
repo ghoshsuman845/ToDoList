@@ -4,7 +4,7 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import{MainComponent} from './main/main.component';
 import {SideBarComponent} from './side-bar/side-bar.component';
 
-import {AddTaskComponent} from './add-task/add-task.component';
+
 const routes: Routes = [
   { path: '', redirectTo: '/side-bar', pathMatch: 'full' },
   
@@ -21,10 +21,7 @@ const routes: Routes = [
       component: MainComponent ,
     },
     
-      { path: 'add-task', 
-      component: AddTaskComponent 
-      },
-  
+     
  
  
 ]

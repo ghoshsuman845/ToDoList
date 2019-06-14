@@ -46,7 +46,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
-import { AddTaskComponent } from './add-task/add-task.component';
 import { MainComponent } from './main/main.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularWebStorageModule } from 'angular-web-storage';
@@ -62,7 +61,7 @@ import {environment} from '../environments/environment'
     AppComponent,
     DashboardComponent,
     SideBarComponent,
-    AddTaskComponent,
+    
     MainComponent
   ],
   imports: [

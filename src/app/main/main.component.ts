@@ -12,7 +12,7 @@ import { TodoService} from './shared/todo.service';
 })
 export class MainComponent implements OnInit {
   todolistArray: any[];
-  opened:boolean=true;
+  opened:boolean= false;
   itemName = '';
   itemDueDate = '';
   itemRepeat = '';
