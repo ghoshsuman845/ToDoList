@@ -1,0 +1,59 @@
+<mat-sidenav-container class="example-container" *ngIf="!shouldRun">
+  <mat-sidenav #sidenav [mode]="mode.value" >
+    <p><button mat-button (click)="sidenav.toggle()"><i class="material-icons">close</i></button></p>
+  
+        <mat-toolbar>
+            <mat-toolbar-row>
+              <a>
+                <span routerLink="/side-bar/dashboard">My Tasks</span>
+                <span class="example-spacer"></span>
+                <i class="material-icons">
+                  calendar_today
+                </i>
+              </a>  
+            </mat-toolbar-row>
+          
+            <mat-toolbar-row>
+              <a>
+              <span>My Day</span>
+              <span class="example-spacer"></span>
+              <i class="material-icons">
+                  star
+              </i>
+            </a>
+            </mat-toolbar-row>
+          
+            <mat-toolbar-row>
+              <a>
+              <span>Planned</span>
+              <span class="example-spacer"></span>
+              <i class="material-icons">
+                  list
+               </i>
+              </a>
+            </mat-toolbar-row>
+            <mat-toolbar-row>
+              <a>
+                <span>Tasks</span>
+                <span class="example-spacer"></span>
+                <i class="material-icons">
+                    today
+                 </i>
+                </a>
+              </mat-toolbar-row>
+          </mat-toolbar>
+          
+
+  </mat-sidenav>
+
+<mat-sidenav-content>
+
+  <div >
+    <p><button mat-button (click)="sidenav.toggle()"><i class="material-icons">apps</i>	</button></p>
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-content>
+</mat-sidenav-container>
+
+
+

@@ -1,0 +1,73 @@
+<div class="jumbotron">
+  <h4 class="text-center">My Day</h4>
+</div>
+
+<div class="input-group">
+  <input type="text" class="form-control" #itemTitle>
+  <div class="input-group-addon hover-cursor" (click)="onAdd(itemTitle)">
+      <i class="fa fa-plus-square fa-2x " aria-hidden="true"></i>
+
+  </div>
+</div>
+<div style="margin: 5px 0px">
+  <ul class="list-group" >
+    <li class="list-group-item" *ngFor= "let item of todolistArray"  >
+      <span class="hover-cursor" [class.text-success]="item.isChecked" (click)="alterCheck(item.$key,item.isChecked)">
+        <i class="fa fa-lg" [ngClass]="item.isChecked?'fa-check-circle-o':'fa-circle-thin'" (click)="opened=true"></i>
+      </span>
+      {{item.title}}
+      <span class="hover-cursor text-danger pull-right" (click)="onDelete(item.$key)">
+          <i class="fa fa-trash-o fa-lg"></i>
+        </span>
+    </li>
+  </ul>
+
+</div>
+
+
+ <form [formGroup]="contactForm"> 
+<div class="example-container"  *ngIf="opened"  >
+    <div class="example-button-row closebtn">
+        <button mat-fab color="primary" (click)="opened = !opened">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <div>
+      <h1>Add Task</h1>  
+      <br><br><br>
+      <mat-form-field>
+        <input matInput formControlName="contactFormName" [(ngModel)]="itemName"  placeholder="Name of Task">
+      </mat-form-field>
+
+      <mat-form-field  >
+        <textarea matInput formControlName="contactFormMessage" [(ngModel)]="itemMessage"  placeholder="Add a Note"></textarea>
+      </mat-form-field>
+
+
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" formControlName="contactFormDueDate" [(ngModel)]="itemDueDate"  placeholder="Add Due date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field > 
+        <mat-label formControlName="contactFormRepeat" [(ngModel)]="itemRepeat" >Repeat</mat-label>
+        <mat-select disableRipple>
+          <mat-option value="1">Daily</mat-option>
+          <mat-option value="2">Weekly</mat-option>
+          <mat-option value="3">Monthly</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-slide-toggle>Add Reminder!</mat-slide-toggle>
+      <br><br><br><br>
+      <div class="example-button-row">
+       <button mat-raised-button [disabled]="contactForm.valid" (click)="clearForm()" (click)="onSubmit()" color="primary">Save Task</button>
+
+       
+      </div>
+    </div>
+  </div>
+</form>
+  
+    
+
+ 

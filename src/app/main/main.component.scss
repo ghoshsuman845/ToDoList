@@ -1,0 +1,77 @@
+.hover-cursor{
+  cursor: pointer;
+}
+.jumbotron{
+  padding: 45px 0px;
+  background-color:  #3486D6;
+  width: 400px;
+  margin-left: 350px;
+  margin-right: 450px;
+}
+.input-group{
+  width: 400px;
+  margin-left: 350px;
+  margin-right: 450px;
+
+}
+.list-group{
+  width: 400px;
+  margin-left: 350px;
+  margin-right: 450px;
+}
+
+.fa-2x {
+  font-size: 2.75em;
+  line-height: 0.85;
+}
+
+
+.example-container {
+  position: absolute;
+  
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.mat-form-field{
+  width: 350px;
+}
+
+
+
+
+ .example-container {
+    display: block;
+    width: 400px;
+    height: 100%; 
+    width: 400px; 
+    position: fixed; 
+    z-index: 1; 
+    top: 0;
+    right: 0px;
+    left: auto;
+    float: left;
+    overflow-x: visible;
+    padding-top: 60px; 
+     transition:  2s;
+    padding: 32px 8px 8px 8px;
+    text-decoration: none;
+    font-size: 15px;
+    color:black;
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }
+   .linkbtn{
+      margin-left: 20px;
+  }
+  .closebtn{
+    position: relative;
+    top: 0;
+    margin-right: 0px;
+    font-size: 36px;
+    margin-left: 300px;
+  }
