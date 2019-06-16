@@ -25,89 +25,167 @@ body {
   margin: 0 auto;
 }
 
-h1 {
-    font-size: 24px;
-    font-weight: 500;
-    text-align: left;
-    padding: 1rem;
-}
+// h1 {
+//     font-size: 24px;
+//     font-weight: 500;
+//     text-align: left;
+//     padding: 1rem;
+// }
 
-img {
-  height: auto;
-  max-width: 100%;
-  vertical-align: middle;
-}
+// img {
+//   height: auto;
+//   max-width: 100%;
+//   vertical-align: middle;
+// }
 
-.btn {
-  color: #ffffff;
-  padding: 0.8rem;
-  font-size: 14px;
-  text-transform: uppercase;
-  border-radius: 4px;
-  font-weight: 400;
-  display: inline;
-  width:50%;
+// .btn {
+//   color: #ffffff;
+//   padding: 0.8rem;
+//   font-size: 14px;
+//   text-transform: uppercase;
+//   border-radius: 4px;
+//   font-weight: 400;
+//   display: inline;
+//   width:50%;
+//   cursor: pointer;
+//   border: 1px solid rgba(255, 255, 255, 0.2);
+//   background: transparent;
+// }
+
+// .btn:hover {
+//   background-color: rgba(255, 255, 255, 0.12);
+// }
+
+// .cards {
+//   display: flex;
+//   flex-wrap: wrap;
+//   list-style: none;
+//   margin: 0;
+//   padding: 0;
+// }
+
+// .cards_item {
+//   display: flex;
+//   padding: 1rem;
+// }
+
+// @media (min-width: 40rem) {
+//   .cards_item {
+//     width: 50%;
+//   }
+// }
+
+// @media (min-width: 56rem) {
+//   .cards_item {
+//     width: 33.3333%;
+//   }
+// }
+
+// .card {
+//   background-color: white;
+//   border-radius: 0.25rem;
+//   box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+//   display: flex;
+//   flex-direction: column;
+//   overflow: hidden;
+// }
+
+// .card_content {
+//   padding: 1rem;
+//   background: linear-gradient(to bottom left, #EF8D9C 40%, #FFC39E 100%);
+// }
+
+// .card_title {
+//   color: #ffffff;
+//   font-size: 1.1rem;
+//   font-weight: 700;
+//   letter-spacing: 1px;
+//   text-transform: capitalize;
+//   margin: 0px;
+// }
+
+// .card_text {
+//   color: #ffffff;
+//   font-size: 0.875rem;
+//   line-height: 1.5;
+//   margin-bottom: 1.25rem;    
+//   font-weight: 400;
+// }
+
+
+.hover-cursor{
   cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: transparent;
+}
+.jumbotron{
+  padding: 45px 0px;
+  background-color:  #3486D6;
+  width: 400px;
+  margin-left: 350px;
+  margin-right: 450px;
+}
+.input-group{
+  width: 400px;
+  // margin-left: 350px;
+  // margin-right: 450px;
+
+}
+.list-group{
+  width: 400px;
+  margin-left: 350px;
+  margin-right: 450px;
 }
 
-.btn:hover {
-  background-color: rgba(255, 255, 255, 0.12);
+.fa-2x {
+  font-size: 2.75em;
+  line-height: 0.85;
 }
 
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+
+.example-container {
+  // position: absolute;
+  // top: 0;
+  // bottom: 0;
+  // left: 0;
+  // right: 0;
 }
 
-.cards_item {
-  display: flex;
-  padding: 1rem;
+.mat-form-field{
+  width: 450px;
 }
 
-@media (min-width: 40rem) {
-  .cards_item {
-    width: 50%;
+
+
+
+//  .example-container {
+//     display: block;
+//     width: 400px;
+//     height: 100%; 
+//     width: 400px; 
+//     position: fixed; 
+//     z-index: 1; 
+//     top: 0;
+//     right: 0px;
+//     left: auto;
+//     float: left;
+//     overflow-x: visible;
+//     padding-top: 60px; 
+//      transition:  2s;
+//     padding: 32px 8px 8px 8px;
+//     text-decoration: none;
+//     font-size: 15px;
+//     color:black;
+//   }
+  
+//   .example-container > * {
+//     width: 100%;
+//   }
+   .linkbtn{
+      margin-left: 20px;
   }
-}
-
-@media (min-width: 56rem) {
-  .cards_item {
-    width: 33.3333%;
+  .closebtn{
+    position: relative;
+    top: 0;
+    margin-right: 0px;
+    font-size: 36px;
+    margin-left: 300px;
   }
-}
-
-.card {
-  background-color: white;
-  border-radius: 0.25rem;
-  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.card_content {
-  padding: 1rem;
-  background: linear-gradient(to bottom left, #EF8D9C 40%, #FFC39E 100%);
-}
-
-.card_title {
-  color: #ffffff;
-  font-size: 1.1rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: capitalize;
-  margin: 0px;
-}
-
-.card_text {
-  color: #ffffff;
-  font-size: 0.875rem;
-  line-height: 1.5;
-  margin-bottom: 1.25rem;    
-  font-weight: 400;
-}

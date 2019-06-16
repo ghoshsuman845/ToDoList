@@ -6,10 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-task.component.scss']
 })
 export class AddTaskComponent implements OnInit {
-    taskName= 'Go to Gym'
-    addNote=' Take the Gym Bag'
-    taskdueDate='date'
-    taskRepeat='Weekly'
+  taskName = 'Go to Gym';
+  addNote = ' Take the Gym Bag';
+  taskdueDate = 'date';
+  taskRepeat = 'Weekly';
 
   constructor() { }
 
