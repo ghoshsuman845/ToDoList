@@ -1,88 +1,40 @@
-<div class="main">
-  <h1>Task Board</h1>
-  <button mat-raised-button color="primary" (click)="editTask(null)">
-    <mat-icon>add</mat-icon>
-    Add Task
-  </button>
-  <!-- <ul class="cards">
-    <li class="cards_item">
-      <div class="card">
-        <div class="card_image"><img src="https://picsum.photos/500/300/?image=10"></div>
-        <div class="card_content">
-          <h2 class="card_title">Task</h2>
-          <p class="card_text">This Is the task board where we need to specify the tasks assigned on run time.</p>
-          <button class="btn card_btn" routerLink="/side-bar/main"> Add Subtask</button>
-          <button class="btn card_btn">Remove Task</button>
-
-        </div>
-      </div>
-    </li>
-    <li class="cards_item">
-      <div class="card">
-        <div class="card_image"><img src="https://picsum.photos/500/300/?image=5"></div>
-        <div class="card_content">
-          <h2 class="card_title">Task</h2>
-          <p class="card_text">This Is the task board where we need to specify the tasks assigned on run time.</p>
-          <button class="btn card_btn">Add Subtask</button>
-          <button class="btn card_btn">Remove Task</button>
-
-        </div>
-      </div>
-    </li>
-    <li class="cards_item">
-      <div class="card">
-        <div class="card_image"><img src="https://picsum.photos/500/300/?image=11"></div>
-        <div class="card_content">
-          <h2 class="card_title">Task</h2>
-          <p class="card_text">This Is the task board where we need to specify the tasks assigned on run time.</p>
-          <button class="btn card_btn">Add Subtask</button>
-          <button class="btn card_btn">Remove Task</button>
-
-        </div>
-      </div>
-    </li>
-    <li class="cards_item">
-      <div class="card">
-        <div class="card_image"><img src="https://picsum.photos/500/300/?image=14"></div>
-        <div class="card_content">
-          <h2 class="card_title">Task</h2>
-          <p class="card_text">This Is the task board where we need to specify the tasks assigned on run time.</p>
-          <button class="btn card_btn">Add Subtask</button>
-          <button class="btn card_btn">Remove Task</button>
-
-        </div>
-      </div>
-    </li>
-    <li class="cards_item">
-      <div class="card">
-        <div class="card_image"><img src="https://picsum.photos/500/300/?image=17"></div>
-        <div class="card_content">
-          <h2 class="card_title">Task</h2>
-          <p class="card_text">This Is the task board where we need to specify the tasks assigned on run time.</p>
-        
-            <button class="btn card_btn">Add Subtask</button>
-            <button class="btn card_btn">Remove Task</button>
-        
-
-         
-        </div>
-      </div>
-    </li>
-    <li class="cards_item">
-      <div class="card">
-        <div class="card_image"><img src="https://picsum.photos/500/300/?image=2"></div>
-        <div class="card_content">
-          <h2 class="card_title">Task</h2>
-          <p class="card_text">This Is the task board where we need to specify the tasks assigned on run time.</p>
-          <button class="btn card_btn">Add Subtask</button>
-          <button class="btn card_btn">Remove Task</button>
-
-        </div>
-      </div>
-    </li>
-  </ul>
-   -->
-  <div class="row">
+<div class="container">
+<div class="jumbotron">
+    <h4 class="text-center">Task Board</h4>
+  </div>
+  
+  <div class="input-group">
+    <input type="text" class="form-control" #itemTitle>
+    <button class="btn hover-cursor" (click)="onAdd(itemTitle)"><i class="fa fa-plus"></i>Add Task</button>
+   
+  </div>
+  <div style="margin: 5px 0px" >
+    <ul class="list-group" >
+      <li class="list-group-item grad" *ngFor= "let item of todolistArray"  >
+        <span class="hover-cursor" [class.text-primary]="item.isChecked" (click)="alterCheck(item.$key,item.isChecked)">
+          <i class="fa fa-lg" [ngClass]="item.isChecked?'fa-check-circle-o':'fa-circle-thin'" ></i>
+        </span>
+        {{item.title}}
+        <span class="hover-cursor text-dark pull-right " routerLink="/side-bar/main">
+          <i class="fa fa-arrow-circle-right fa-lg"></i>
+        </span>
+       
+        <span class="hover-cursor text-danger pull-right" (click)="onDelete(item.$key)">
+            <i class="fa fa-trash-o fa-lg"></i>
+          </span>
+          <span class="hover-cursor text-success pull-right " (click)="onEdit(item.$key)" >
+            <i class="fa fa-pencil fa-lg"></i>
+          </span>
+  
+      </li>
+    </ul>
+  </div>
+</div>
+  
+  
+   
+ 
+  <!-- <div class="row">
 
     <div [class]="showAddTask ? 'col-md-7 ' : 'col-md-12'">
       <div class="row">
@@ -104,7 +56,7 @@
               <button mat-button color="primary" (click)="editTask( task)">Edit Task</button>
               <button mat-button color="primary" (click)='removeTask(i)'>Remove Task</button>
             </mat-card-actions>
-          </mat-card>
+          </mat-card> -->
           <!-- <div class="card ">
             <div class="card card-heading card-heading-warning"></div>
             <div class="card-content">
@@ -122,7 +74,7 @@
 
             </div>
           </div> -->
-        </div>
+        <!-- </div>
       </div>
     </div>
     <div *ngIf="showAddTask" class="col-md-5">
@@ -167,7 +119,7 @@
               </mat-select>
             </mat-form-field>
             <br>
-            <mat-slide-toggle name="reminer" formControlName="reminer">Add Reminder!</mat-slide-toggle>
+            <mat-slide-toggle name="reminder" formControlName="reminder">Add Reminder!</mat-slide-toggle>
             <mat-form-field>
               <input matInput name="subtask" [(ngModel)]="subValue" [ngModelOptions]="{standalone: true}"
                 placeholder="Add Sub-Task">
@@ -195,4 +147,4 @@
       </form>
     </div>
   </div>
-</div>
+</div> -->

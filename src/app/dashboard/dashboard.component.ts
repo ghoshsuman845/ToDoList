@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { TodoService } from '../main/shared/todo.service';
-import { TaskList } from '../task';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -12,19 +12,10 @@ import { TaskList } from '../task';
 export class DashboardComponent implements OnInit {
   todolistArray: any[];
   opened = true;
-  itemName = '';
-  itemDueDate = '';
-  itemRepeat = '';
-  itemMessage = '';
-  items: Observable<any[]>;
-  contactForm: FormGroup;
-  showAddTask = false;
-  taskList = TaskList;
-  subtask = [];
-  subValue = '';
+  
+  
   constructor(private toDoService: TodoService, private fb: FormBuilder, private db: AngularFireDatabase) {
-    this.items = db.list('messages').valueChanges();
-    this.contactForm = this.getContactForm();
+   
   }
 
   getContactForm() {
@@ -71,35 +62,5 @@ export class DashboardComponent implements OnInit {
   }
 
 
-  onSubmit() {
-    this.db.list('/messages').push(this.contactForm.value);
-    console.log(this.contactForm.value);
-    this.taskList.push(this.contactForm.value);
-    this.clearForm();
-  }
-
-  clearForm() {
-    this.contactForm.reset();
-    this.showAddTask = false;
-  }
-
-  editTask(val) {
-    if (val !== null) {
-
-      this.contactForm.patchValue(val);
-      this.subtask = val.subTask;
-    }
-    this.showAddTask = true;
-  }
-
-  removeTask(i) {
-    this.taskList.splice(i, 1);
-  }
-  removeSubTask(i) {
-    this.subtask.splice(i, 1);
-  }
-  addSubTAsk(value) {
-    this.subtask.push(value);
-    this.subValue = '';
-  }
+  
 }

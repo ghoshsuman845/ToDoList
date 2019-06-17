@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { TodoService } from './shared/todo.service';
+import { TaskList } from '../task';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -11,74 +12,67 @@ import { TodoService } from './shared/todo.service';
   providers: [TodoService]
 })
 export class MainComponent implements OnInit {
-  todolistArray: any[];
-<<<<<<< HEAD
-  opened:boolean= false;
-=======
-  opened = true;
->>>>>>> 116e0d3167238b205eaef02bea403889954b9b1d
-  itemName = '';
-  itemDueDate = '';
-  itemRepeat = '';
-  itemMessage = '';
-  items: Observable<any[]>;
-  contactForm: FormGroup;
+ 
+  subTaskListArray: any[];
+  opened = false;
+  showAddTask = false;
+  taskList = TaskList;
+  subtask = [];
+  subValue = '';
+ 
 
 
 
 
   constructor(private toDoService: TodoService, private fb: FormBuilder, private db: AngularFireDatabase) {
-    this.items = db.list('messages').valueChanges();
-    this.contactForm = this.fb.group({
-      contactFormName: ['', Validators.required],
-      contactFormDueDate: ['', Validators.required],
-      contactFormRepeat: ['', Validators.required],
-      contactFormMessage: ['', Validators.required]
-    });
+   
+   
   }
 
   ngOnInit() {
-    this.toDoService.gettodolist().snapshotChanges()
+    this.toDoService.getsubTaskList().snapshotChanges()
       .subscribe(item => {
-        this.todolistArray = [];
+        this.subTaskListArray = [];
         item.forEach(element => {
           let x = element.payload.toJSON();
-          // tslint:disable-next-line:no-string-literal
+          
           x['$key'] = element.key;
-          this.todolistArray.push(x);
+          this.subTaskListArray.push(x);
         });
 
         // sort array isChecked false -> true
-        this.todolistArray.sort((a, b) => {
+        this.subTaskListArray.sort((a, b) => {
           return a.isChecked - b.isChecked;
 
 
         });
       });
   }
-  onAdd(itemTitle) {
-    this.toDoService.addTitle(itemTitle.value);
-    itemTitle.value = null;
+  onAdd(itemSubTitle) {
+    this.toDoService.addSubTitle(itemSubTitle.value);
+    itemSubTitle.value = null;
   }
   alterCheck($key: string, isChecked) {
-    this.toDoService.checkOrUnCheckTitle($key, !isChecked);
+    this.toDoService.checkOrUnCheckSubTitle($key, !isChecked);
 
   }
   onDelete($key: string) {
-    this.toDoService.removeTitle($key);
+    this.toDoService.removeSubTitle($key);
   }
 
+  
 
-  onSubmit() {
-    this.db.list('/messages').push({
-      name: this.itemName, dueDate: this.itemDueDate, repeat: this.itemRepeat,
-      message: this.itemMessage
-    });
+  removeTask(i) {
+    this.taskList.splice(i, 1);
   }
-
-  clearForm() {
-    this.contactForm.reset();
+  removeSubTask(i) {
+    this.subtask.splice(i, 1);
   }
+  addSubTask(value) {
+    this.subtask.push(value);
+    this.subValue = '';
+  }
+  
 
 }
 
