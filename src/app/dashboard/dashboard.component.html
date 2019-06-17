@@ -1,6 +1,10 @@
 <div class="main">
   <h1>Task Board</h1>
-  <ul class="cards">
+  <button mat-raised-button color="primary" (click)="editTask(null)">
+    <mat-icon>add</mat-icon>
+    Add Task
+  </button>
+  <!-- <ul class="cards">
     <li class="cards_item">
       <div class="card">
         <div class="card_image"><img src="https://picsum.photos/500/300/?image=10"></div>
@@ -77,5 +81,118 @@
       </div>
     </li>
   </ul>
-</div>
+   -->
+  <div class="row">
 
+    <div [class]="showAddTask ? 'col-md-7 ' : 'col-md-12'">
+      <div class="row">
+        <div class=" col-md-4" *ngFor="let task of taskList ; let i =index">
+
+          <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-title>{{task.title}}</mat-card-title>
+              <mat-card-subtitle>{{task.taskTitle}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p>{{task.desc}}
+              </p>
+              <ul *ngFor="let subtask of task.subTask; let i =index">
+                <mat-card>{{subtask}}</mat-card>
+              </ul>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button color="primary" (click)="editTask( task)">Edit Task</button>
+              <button mat-button color="primary" (click)='removeTask(i)'>Remove Task</button>
+            </mat-card-actions>
+          </mat-card>
+          <!-- <div class="card ">
+            <div class="card card-heading card-heading-warning"></div>
+            <div class="card-content">
+              <h2 class="card-title">{{task.taskTitle}}</h2>
+              <p class="card-text">{{task.desc}}</p>
+              <ul *ngFor="let subtask of task.subTask; let i =index">
+                  <mat-card>Simple card</mat-card>
+
+                <li>
+                  {{subtask}}
+                </li>
+              </ul>
+              <button class="btn card_btn" (click)="editTask( task)"> Edit Task</button>
+              <button class="btn card_btn">Remove Task</button>
+
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+    <div *ngIf="showAddTask" class="col-md-5">
+      <form [formGroup]="contactForm">
+        <div class="example-container">
+          <div class="example-button-row closebtn">
+
+            <button mat-fab color="primary" (click)="clearForm()">
+              <mat-icon>close</mat-icon>
+            </button>
+
+          </div>
+          <div>
+            <h1>Add Task</h1>
+            <br>
+            <mat-form-field>
+              <input matInput name="taskTitle" formControlName="title" placeholder="Title of Task">
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+              <input matInput name="taskTitle" formControlName="taskTitle" placeholder="Name of Task">
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+              <textarea matInput name="desc" formControlName="desc" placeholder="Add a Note"></textarea>
+            </mat-form-field>
+
+            <br>
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker" name="time" formControlName="time" placeholder="Add Due date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+              <mat-label>Repeat</mat-label>
+              <mat-select disableRipple name="repeat" formControlName="repeat">
+
+                <mat-option value="Daily">Daily</mat-option>
+                <mat-option value="Weekly">Weekly</mat-option>
+                <mat-option value="Monthly">Monthly</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <br>
+            <mat-slide-toggle name="reminer" formControlName="reminer">Add Reminder!</mat-slide-toggle>
+            <mat-form-field>
+              <input matInput name="subtask" [(ngModel)]="subValue" [ngModelOptions]="{standalone: true}"
+                placeholder="Add Sub-Task">
+
+            </mat-form-field>
+            <button [disabled]='subValue ==""' mat-raised-button color="primary" matBadgeColor="accent">
+              <mat-icon (click)="addSubTAsk(subValue)">add</mat-icon>
+            </button>
+            <p *ngFor="let sub of subtask; let i =index">
+              {{sub}}
+              <button mat-raised-button color="primary" matBadgeColor="accent">
+                <mat-icon (click)="removeSubTask(i)">close</mat-icon>
+              </button>
+            </p>
+
+            <br><br><br><br>
+            <div class="example-button-row">
+              <button mat-raised-button (click)="onSubmit()" color="primary">Save
+                Task</button>
+
+
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
