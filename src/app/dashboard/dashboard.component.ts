@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import {TaskList} from '../task'
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { TodoService } from '../main/shared/todo.service';
 
@@ -33,10 +33,12 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.toDoService.gettodolist().snapshotChanges()
       .subscribe(item => {
-        this.todolistArray = [];
+        this.todolistArray = [
+          
+        ];
         item.forEach(element => {
           let x = element.payload.toJSON();
-          // tslint:disable-next-line:no-string-literal
+         
           x['$key'] = element.key;
           this.todolistArray.push(x);
         });

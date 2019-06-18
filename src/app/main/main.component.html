@@ -1,5 +1,6 @@
 <div class="jumbotron">
-  <h4 class="text-center">Task Name:</h4>
+    <h4 class="text-center">{{taskList.id}}</h4>
+  <h4 class="text-center">{{taskList.taskName}}</h4>
 </div>
 
 <div class="input-group">
@@ -11,12 +12,14 @@
 </div>
 <div style="margin: 5px 0px">
   <ul class="list-group" >
-    <li class="list-group-item" *ngFor= "let item of subTaskListArray"  >
+    <li class="list-group-item" *ngFor= "let item of subTaskListArray" id="subTask" >
       <span class="hover-cursor" [class.text-dark]="item.isChecked" (click)="alterCheck(item.$key,item.isChecked)">
         <i class="fa fa-lg" [ngClass]="item.isChecked?'fa-check-circle-o':'fa-circle-thin'" ></i>
       </span>
       {{item.title}}
-     
+      <span class="hover-cursor text-dark pull-right " (click)="goBack()">
+        <i class="fa fa-arrow-circle-left fa-lg"></i>
+      </span>
      
       <span class="hover-cursor text-danger pull-right" (click)="onDelete(item.$key)">
           <i class="fa fa-trash-o fa-lg"></i>

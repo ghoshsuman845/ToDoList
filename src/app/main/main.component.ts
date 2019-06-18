@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Component, OnInit, Input } from '@angular/core';
 
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { TodoService } from './shared/todo.service';
 import { TaskList } from '../task';
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -12,19 +13,18 @@ import { TaskList } from '../task';
   providers: [TodoService]
 })
 export class MainComponent implements OnInit {
- 
+  @Input()  taskList = TaskList;
   subTaskListArray: any[];
   opened = false;
-  showAddTask = false;
-  taskList = TaskList;
-  subtask = [];
-  subValue = '';
+  
  
+  
 
 
 
 
-  constructor(private toDoService: TodoService, private fb: FormBuilder, private db: AngularFireDatabase) {
+
+  constructor(private toDoService: TodoService, private route: ActivatedRoute, private location: Location, private db: AngularFireDatabase) {
    
    
   }
@@ -47,6 +47,7 @@ export class MainComponent implements OnInit {
 
         });
       });
+    this.getTaskList();
   }
   onAdd(itemSubTitle) {
     this.toDoService.addSubTitle(itemSubTitle.value);
@@ -59,19 +60,19 @@ export class MainComponent implements OnInit {
   onDelete($key: string) {
     this.toDoService.removeSubTitle($key);
   }
+  getTaskList(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.toDoService.getTaskList(id)
+      .subscribe(taskList=> this.taskList= taskList);
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
 
   
 
-  removeTask(i) {
-    this.taskList.splice(i, 1);
-  }
-  removeSubTask(i) {
-    this.subtask.splice(i, 1);
-  }
-  addSubTask(value) {
-    this.subtask.push(value);
-    this.subValue = '';
-  }
+ 
   
 
 }

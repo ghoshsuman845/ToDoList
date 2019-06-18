@@ -1,92 +1,17 @@
-export const TaskList = [
-    {
-        title: 'Task title',
-        taskTitle: 'Task Name',
-        desc: 'This Is the task board where we need to specify the tasks assigned on run time.',
-        reminder: true,
-        repeat: 'Daily',
-        time: new Date(),
-        subTask: [
-            'task1',
-            'task2',
-            'task3',
-            'task4'
-        ]
-    },
-
-    // {
-    //     title: 'task title',
-    //     taskTitle: 'task Name',
-    //     desc: 'This Is the task board where we need to specify the tasks assigned on run time.',
-    //     reminder: true,
-    //     repeat: 'Daily',
-    //     time: new Date(),
-    //     subTask: [
-    //         'task1',
-    //         'task2',
-    //         'task3',
-    //         'task4'
-    //     ]
-    // },
-
-    // {
-    //     title: 'task title',
-    //     taskTitle: 'task Name',
-    //     desc: 'This Is the task board where we need to specify the tasks assigned on run time.',
-    //     reminder: true,
-    //     repeat: 'Daily',
-    //     time: new Date(),
-    //     subTask: [
-    //         'task1',
-    //         'task2',
-    //         'task3',
-    //         'task4'
-    //     ]
-    // },
-
-    // {
-    //     title: 'task title',
-    //     taskTitle: 'task Name',
-    //     desc: 'This Is the task board where we need to specify the tasks assigned on run time.',
-    //     reminder: true,
-    //     repeat: 'Daily',
-    //     time: new Date(),
-    //     subTask: [
-    //         'task1',
-    //         'task2',
-    //         'task3',
-    //         'task4'
-    //     ]
-    // },
-
-    // {
-    //     title: 'task title',
-    //     taskTitle: 'task Name',
-    //     desc: 'This Is the task board where we need to specify the tasks assigned on run time.',
-    //     reminer: true,
-    //     repeat: 'Daily',
-    //     time: new Date(),
-    //     subTask: [
-    //         'task1',
-    //         'task2',
-    //         'task3',
-    //         'task4'
-    //     ]
-    // },
-
-    // {
-    //     title: 'task title',
-    //     taskTitle: 'task Name',
-    //     desc: 'This Is the task board where we need to specify the tasks assigned on run time.',
-    //     reminer: true,
-    //     repeat: 'Daily',
-    //     time: new Date(),
-    //     subTask: [
-    //         'task1',
-    //         'task2',
-    //         'task3',
-    //         'task4'
-    //     ]
-    // },
-
-];
+export class TaskList {
+    id: number;
+    taskName: string;
+  }
+export const subTask: TaskList[] = [
+    { id: 11, taskName: 'Dr Nice' },
+    { id: 12, taskName: 'Narco' },
+    { id: 13, taskName: 'Bombasto' },
+    { id: 14, taskName: 'Celeritas' },
+    { id: 15, taskName: 'Magneta' },
+    { id: 16, taskName: 'RubberMan' },
+    { id: 17, taskName: 'Dynama' },
+    { id: 18, taskName: 'Dr IQ' },
+    { id: 19, taskName: 'Magma' },
+    { id: 20, taskName: 'Tornado' }
+  ];
+   
