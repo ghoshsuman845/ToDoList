@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {TaskList} from '../task'
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { TodoService } from '../main/shared/todo.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,7 +15,7 @@ export class DashboardComponent implements OnInit {
   opened = true;
   
   
-  constructor(private toDoService: TodoService, private fb: FormBuilder, private db: AngularFireDatabase) {
+  constructor(private toDoService: TodoService, private router: Router, private fb: FormBuilder, private db: AngularFireDatabase) {
    
   }
 
@@ -64,5 +65,15 @@ export class DashboardComponent implements OnInit {
   }
 
 
-  
+  goToTask(taskDetails) {
+    // get id form task detail using firebase methods\
+
+
+
+
+    
+    const id = 2333 //get from from forebase 
+    this.router.navigate(['/side-bar/main'], { queryParams: { TaskId: id } })
+    // then send id by routing
+  }
 }

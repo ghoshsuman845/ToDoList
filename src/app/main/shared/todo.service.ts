@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
-import { TaskList } from '../task';
-import { Observable, of } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,12 +14,17 @@ export class TodoService {
 
 
   }
+  // get task list form firebase (task list)
   getTaskList (){
     this.taskList = this.firebasedb.list('subTitles');
     return this.taskList;
       
   }
-  gettodolist() {
+// get task by task-id from firebase list ( single task )
+  getTaskById(id) {
+    return this.firebasedb.object('subTitles/'+id);
+
+ }  gettodolist() {
     this.todolist = this.firebasedb.list('titles');
     return this.todolist;
   }

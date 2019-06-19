@@ -14,12 +14,12 @@ import { TaskList } from '../task';
 })
 export class MainComponent implements OnInit {
   @Input()  taskList = TaskList;
-  subTaskListArray: any[];
+  subTaskListArray = [];
   opened = false;
   
- 
+ task:any;
   
-
+TaskIdFromURL: number;
 
 
 
@@ -30,6 +30,21 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    // get taskid from url
+  this.route.queryParams
+    .subscribe(params => {
+      // Defaults to 0 if no query param provided.
+      this.TaskIdFromURL = +params['TaskId'] || 0;
+      console.log(this.TaskIdFromURL);
+      
+    });
+
+
+// get task by task id from firebase 
+this.getTaskFromListById();
+
+// below function can't use becouse its get main task list from firebase database 
     this.toDoService.getsubTaskList().snapshotChanges()
       .subscribe(item => {
         this.subTaskListArray = [];
@@ -47,7 +62,9 @@ export class MainComponent implements OnInit {
 
         });
       });
-    this.getTaskList();
+
+
+
   }
   onAdd(itemSubTitle) {
     this.toDoService.addSubTitle(itemSubTitle.value);
@@ -60,10 +77,14 @@ export class MainComponent implements OnInit {
   onDelete($key: string) {
     this.toDoService.removeSubTitle($key);
   }
-  getTaskList(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.toDoService.getTaskList(id)
-      .subscribe(taskList=> this.taskList= taskList);
+  getTaskFromListById(): void {
+
+   this.task = this.toDoService.getTaskById(this.TaskIdFromURL);
+      // .subscribe(taskList=> this.taskList= taskList);
+
+      // console the task to veryfiy task 
+      console.log( this.task);
+      
   }
 
   goBack(): void {

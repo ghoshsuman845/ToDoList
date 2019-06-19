@@ -15,7 +15,7 @@
           <i class="fa fa-lg" [ngClass]="item.isChecked?'fa-check-circle-o':'fa-circle-thin'" ></i>
         </span>
         {{item.title}}
-        <span class="hover-cursor text-dark pull-right " routerLink="/side-bar/main">
+        <span class="hover-cursor text-dark pull-right " (click)="goToTask(item)">
           <i class="fa fa-arrow-circle-right fa-lg"></i>
         </span>
        
